@@ -9,12 +9,7 @@ import sys
 #copy the schedule file and newCrewfile 
 #run the command
 #   ~./ ==homedirctoary 
-# if len(sys.argv) ==4:
-#     #-s fileSchedule filenewCrew
-#     pass
-# elif len(sys.argv) == 3:
-#     # 10 le^6
-#     pass
+  
 
 # class of train to store information like train number, crew class, etc that helpful for output and statistic, 
 # also provide helper function for self generating simulation
@@ -359,7 +354,23 @@ class TrainStation():
         for key,val in self.HogoutCountPerTrain.items():
             print(f"[{key}]: {val}")
         
-        
+while True:
+    if len(sys.argv) ==4:
+        if sys.argv[1] !="-s":
+            print("first argument should be -s")
+        else:
+            trainSchedule = sys.argv[2] #schedule
+            newCrew = sys.argv[3] # newcrew
+            #-s fileSchedule filenewCrew
+            break
+    elif len(sys.argv) == 3:
+        ratio = sys.argv[1] #ratio
+        timelimit = sys.argv[2] #limit
+        ts = TrainStation(123,timelimit,ratio)
+        ts.RunSimulation()
+        break
+    print("length of command should be 3 or 4, ex (./train 10.0 1000000 or ./train –s schedule.txt traveltimes.txt)")
+      
             
-t = TrainStation(1,10000,10)
-t.RunSimulation()
+# t = TrainStation(1,10000,10)
+# t.RunSimulation()
